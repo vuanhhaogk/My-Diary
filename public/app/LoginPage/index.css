@@ -1,0 +1,59 @@
+#app .page.login {
+
+}
+
+#app .page.login .form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
+    width: 300px;
+    height: 200px;
+}
+
+#app .page.login .form .title {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#app .page.login .form .error {
+    color: #f44336;
+    background-color: #ffcdd2;
+    border: 1px solid #f44336;
+    font-size: 10pt;
+    line-height: 2em;
+    padding: 0 .5em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    visibility: hidden;
+}
+
+#app .page.login .form .error[error='true'] {
+    visibility: visible;
+}
+
+#app .page.login .form .input, #app .page.login .form .submit {
+    font-size: 14pt;
+    border-radius: 3px;
+    padding: 0 .5em;
+    display: block;
+    border: none;
+    line-height: 2em;
+}
+
+#app .page.login .form .input {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #BDBDBD;
+}
+
+#app .page.login .form .submit {
+    background-color: #616161;
+    color: #f0f0f0;
+    cursor: pointer;
+    margin: 0 auto;
+}

@@ -4,5 +4,26 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
+
         title My Diary
+
+        link(href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,400i,700,700i&amp;subset=vietnamese" rel="stylesheet")
+
+        link(rel='stylesheet' href='/asset/css/style.css')
+        link(rel='stylesheet' href='/app/index.css')
+        link(rel='stylesheet' href='/app/LoginPage/index.css')
     body
+        #app
+            .page.login(v-if='LoginPage.active')
+                .form
+                    h1.title MY DIARY
+                    .error Mật khẩu không đúng
+                    input.input(type='password' v-model='LoginPage.password')
+                    button.submit(v-click='LoginPage_login') Login
+            //.page.work(v-if='WorkPage.active')
+            //.page.notice(v-if='NoticePage.active')
+
+        script(src='/lib/vuejs/vue.js')
+
+        script(src='/app/index.js')
+        script(src='/app/LoginPage/index.js')

@@ -1,0 +1,25 @@
+{
+  "name": "my-diary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuanhhaogk/My-Diary.git"
+  },
+  "author": "Vu Anh Hao <vuanhhaogk@gmail.com> (https://www.vuanhhao.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuanhhaogk/My-Diary/issues"
+  },
+  "homepage": "https://github.com/vuanhhaogk/My-Diary#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "commander": "^2.15.1",
+    "express": "^4.16.3",
+    "pug": "^2.0.2"
+  }
+}

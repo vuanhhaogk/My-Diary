@@ -1,0 +1,174 @@
+#app .page.work {
+    
+}
+
+#open-left-panel {
+    display: none;
+}
+
+label[for='open-left-panel'] {
+    display: none;
+}
+
+#app .page.work .left {
+    width: 320px;
+    background-color: #424242;
+    color: #f0f0f0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 10px 0;
+}
+
+#app .page.work .left .box {
+    margin: 0 0 10px 0;
+}
+
+#app .page.work .left .box .title {
+    color: #727272;
+    font-size: 10pt;
+    line-height: 2em;
+    padding: 0 10px;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid #323232;
+    margin-bottom: 10px;
+}
+
+#app .page.work .left .box .list button.item {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 12pt;
+    background-color: #212121;
+    border: none;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#app .page.work .left .box .list button.item .date {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-color: #141414;
+}
+
+#app .page.work .left .box .list button.item .date .day {
+    line-height: 20px;
+    font-size: 14pt;
+    color: #f0f0f0;
+}
+
+#app .page.work .left .box .list button.item .date .monthyear {
+    line-height: 24px;
+    font-size: 9pt;
+    color: #949494;
+}
+
+#app .page.work .left .box .list button.item .ititle {
+    color: #f0f0f0;
+    text-align: left;
+    padding: 0 10px;
+    display: block;
+    float: left;
+    width: calc(100% - 50px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14pt;
+}
+
+#app .page.work .left .box.recent {
+    height: calc(50% - 60px);
+    overflow: hidden;
+}
+
+#app .page.work .left .box.memory {
+    height: calc(50% - 200px);
+    overflow: hidden;
+}
+
+#app .page.work .left .box.recent .list, #app .page.work .left .box.memory .list {
+    overflow-y: scroll;
+    background-color: #323232;
+    height: calc(100% - 35px);
+}
+
+#app .page.work .left .box.chart .calendar {
+    width: 100%;
+    height: 300px;
+}
+
+#app .page.work .left .box.chart .calendar .ctitle {
+    font-size: 10pt;
+    line-height: 10pt;
+    width: 50px;
+    text-align: center;
+}
+
+#app .page.work .left .box.chart .calendar .ctitle.week .day {
+    height: 12px;
+    margin-bottom: 3px;
+}
+
+#app .page.work .left .box.chart .calendar .week {
+    float: left;
+    margin-right: 3px;
+}
+
+#app .page.work .left .box.chart .calendar .clist {
+    width: 255px;
+    overflow: hidden;
+}
+
+#app .page.work .left .box.chart .calendar .clist .week .day {
+    width: 12px;
+    height: 12px;
+    background-color: #323232;
+    margin-bottom: 3px;
+}
+
+#app .page.work .left .box.chart .calendar .clist .week .day[check='true'] {
+    background-color: #9E9E9E;
+}
+
+#app .page.work .main {
+    margin-left: 320px;
+    background-color: #f0f0f0;
+    width: calc(100% - 320px);
+    height: 100%;
+    overflow: hidden;
+}
+
+#app .page.work .main .menu {
+    height: 40px;
+    background-color: #e0e0e0;
+}
+
+#app .page.work .main .menu button.item {
+    height: 40px;
+    display: block;
+    border: none;
+    background-color: transparent;
+    color: #949494;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+}
+
+#app .page.work .main .menu button.item.tab {
+    float: left;
+}
+
+#app .page.work .main .menu button.item.tool {
+    float: right;
+}
+
+#app .page.work .main .menu button.item[active=true], #app .page.work .main .menu button.item:hover {
+    color: #424242;
+    background-color: #d0d0d0;
+}

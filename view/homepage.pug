@@ -11,16 +11,251 @@ html(lang="en")
 
         link(rel='stylesheet' href='/asset/css/style.css')
         link(rel='stylesheet' href='/app/index.css')
+
+        link(rel='stylesheet' href='/app/LoadPage/index.css')
         link(rel='stylesheet' href='/app/LoginPage/index.css')
+        link(rel='stylesheet' href='/app/WorkPage/index.css')
     body
         #app
             .page.login(v-if='LoginPage.active')
                 .form
                     h1.title MY DIARY
-                    .error Mật khẩu không đúng
+                    .status(stype='success') Hello
                     input.input(type='password' v-model='LoginPage.password')
                     button.submit(v-click='LoginPage_login') Login
-            //.page.work(v-if='WorkPage.active')
+            .page.load(v-if='LoadPage.active')
+                .loader
+                .content Waiting...
+            .page.work(v-if='WorkPage.active')
+                input#open-left-panel(type='checkbox')
+                label(for='open-left-panel') MENU
+                .left
+                    .box.todday
+                        .title TODAY
+                        .list
+                            button.item
+                                .date
+                                    .monthyear 03/2018
+                                    .day 21
+                                .ititle [No Title]
+                    .box.recent
+                        .title RECENT
+                        .list
+                            button.item
+                                .date
+                                    .monthyear 03/2018
+                                    .day 20
+                                .ititle A lovely day with girl friend.
+                            button.item
+                                .date
+                                    .monthyear 03/2018
+                                    .day 19
+                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
+                            button.item
+                                .date
+                                    .monthyear 03/2018
+                                    .day 18
+                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
+                            button.item
+                                .date
+                                    .monthyear 03/2018
+                                    .day 17
+                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
+                            button.item
+                                .date
+                                    .monthyear 03/2018
+                                    .day 16
+                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
+                            button.item
+                                .date
+                                    .monthyear 03/2018
+                                    .day 15
+                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
+                            button.item
+                                .date
+                                    .monthyear 03/2018
+                                    .day 14
+                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
+                            button.item
+                                .date
+                                    .monthyear 03/2018
+                                    .day 13
+                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
+                    .box.memory
+                        .title MEMORY
+                        .list
+                            button.item
+                                .date
+                                    .monthyear 03/2017
+                                    .day 21
+                                .ititle Happy day
+                            button.item
+                                .date
+                                    .monthyear 03/2016
+                                    .day 21
+                                .ititle Happy day
+                            button.item
+                                .date
+                                    .monthyear 03/2015
+                                    .day 21
+                                .ititle Happy day
+                            button.item
+                                .date
+                                    .monthyear 03/2014
+                                    .day 21
+                                .ititle Happy day
+                    .box.chart
+                        .title CHART
+                        .calendar
+                            .ctitle.week
+                                .day MON
+                                .day TUE
+                                .day WED
+                                .day THU
+                                .day FRI
+                                .day SAT
+                                .day SUN 
+                            .clist
+                                .week
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                                    .day
+                                    .day(check='true')
+                                    .day(check='true')
+                                    .day(check='true')
+                                .week
+                                    .day(check='true')
+                                    .day
+                                    .day
+                .main
+                    .menu
+                        button.item.tab(active='true') EDITOR
+                        button.item.tab PREVIEW
+                        button.item.tool(unsave='true') SAVE
+                        button.item.tool CLEAR
+                    .content.editor
+                    .content.preview
             //.page.notice(v-if='NoticePage.active')
 
         script(src='/lib/vuejs/vue.js')

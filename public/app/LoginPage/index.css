@@ -15,25 +15,29 @@
 #app .page.login .form .title {
     text-align: center;
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-#app .page.login .form .error {
-    color: #f44336;
-    background-color: #ffcdd2;
-    border: 1px solid #f44336;
+#app .page.login .form .status {
     font-size: 10pt;
     line-height: 2em;
     padding: 0 .5em;
     font-weight: bold;
     text-align: center;
     border-radius: 5px;
-    margin-bottom: 20px;
-    visibility: hidden;
+    margin-bottom: 10px;
 }
 
-#app .page.login .form .error[error='true'] {
-    visibility: visible;
+#app .page.login .form .status[stype='success'] {
+    color: #4CAF50;
+    background-color: #E8F5E9;
+    border: 1px solid #4CAF50;
+}
+
+#app .page.login .form .status[stype='error'] {
+    color: #f44336;
+    background-color: #ffcdd2;
+    border: 1px solid #f44336;
 }
 
 #app .page.login .form .input, #app .page.login .form .submit {
@@ -49,6 +53,7 @@
     width: 100%;
     margin-bottom: 10px;
     background-color: #BDBDBD;
+    text-align: center;
 }
 
 #app .page.login .form .submit {

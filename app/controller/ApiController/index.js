@@ -1,6 +1,1 @@
-const express = require('express')
-const router = express.Router()
-
-module.exports = router
-
-const ApiController = {}
+module.exports = require('./ApiRouter')

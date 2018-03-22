@@ -172,3 +172,25 @@ label[for='open-left-panel'] {
     color: #424242;
     background-color: #d0d0d0;
 }
+
+#app .page.work .main .menu button.item[unsave=true] {
+    border-bottom: 3px solid #949494;
+}
+
+#app .page.work .main .menu .date {
+    width: calc(100% - 400px);
+    float: left;
+    text-align: center;
+    color: #949494;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+#app .page.work .main .content {
+    height: calc(100% - 40px);
+}
+
+#app .page.work .main .content .editor {
+    height: 100%;
+}

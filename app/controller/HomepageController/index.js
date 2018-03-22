@@ -1,12 +1,5 @@
-const express = require('express')
-const router = express.Router()
+const config = require('../../../config')()
 
-module.exports = router
+require('./HomepageController').devmode = config.server.devmode || false
 
-const HomepageController = {}
-
-HomepageController.index = function(req, res){
-    res.render('homepage')
-}
-
-router.get('/', HomepageController.index)
+module.exports = require('./HomepageRouter')

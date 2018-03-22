@@ -10,19 +10,22 @@ html(lang="en")
         link(href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,400i,700,700i&amp;subset=vietnamese" rel="stylesheet")
 
         link(rel='stylesheet' href='/asset/css/style.css')
+        link(rel='stylesheet' href='/asset/lib/simplemde/simplemde.min.css')
+
         link(rel='stylesheet' href='/app/index.css')
 
         link(rel='stylesheet' href='/app/LoadPage/index.css')
         link(rel='stylesheet' href='/app/LoginPage/index.css')
         link(rel='stylesheet' href='/app/WorkPage/index.css')
+        
     body
         #app
             .page.login(v-if='LoginPage.active')
                 .form
                     h1.title MY DIARY
-                    .status(stype='success') Hello
+                    .status(v-if='LoginPage.status.type' v-bind:stype='LoginPage.status.type') {{LoginPage.status.message}}
                     input.input(type='password' v-model='LoginPage.password')
-                    button.submit(v-click='LoginPage_login') Login
+                    button.submit(v-on:click='LoginPage_login') Login
             .page.load(v-if='LoadPage.active')
                 .loader
                 .content Waiting...
@@ -250,15 +253,21 @@ html(lang="en")
                                     .day
                 .main
                     .menu
-                        button.item.tab(active='true') EDITOR
-                        button.item.tab PREVIEW
-                        button.item.tool(unsave='true') SAVE
-                        button.item.tool CLEAR
-                    .content.editor
-                    .content.preview
+                        button.item.tab(v-if="!WorkPage.readonly" v-on:click='WorkPage_edit' v-bind:active='WorkPage.curtab == "edit" ? "true" : "false"') EDITOR
+                        button.item.tab(v-on:click='WorkPage_view' v-bind:active='WorkPage.curtab === "view" ? "true" : "false"') VIEW
+                        .item.date 22/12/2018
+                        button.item.tool(v-if="!WorkPage.readonly" unsave='false') SAVE
+                        button.item.tool(v-if="!WorkPage.readonly") CLEAR
+                    .content.editor(v-bind:active='WorkPage.curtab == "edit" ? "true" : "false"')
+                    .content.preview(v-bind:active='WorkPage.curtab == "view" ? "true" : "false"')
             //.page.notice(v-if='NoticePage.active')
 
-        script(src='/lib/vuejs/vue.js')
+        script(src=devmode ? '/asset/lib/vuejs/vue.js' : '/asset/lib/vuejs/vue.min.js')
+        script(src='/asset/lib/simplemde/simplemde.min.js')
 
         script(src='/app/index.js')
+        script(src='/app/LoadPage/index.js')
         script(src='/app/LoginPage/index.js')
+        script(src='/app/WorkPage/index.js')
+
+        script(src='/app/start.js')

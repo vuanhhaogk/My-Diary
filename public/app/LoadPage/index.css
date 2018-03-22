@@ -1,6 +1,6 @@
 #app .page.load {
     background-color: rgba(255, 255, 255, .8);
-    _z-index: 1000;
+    z-index: 1000;
 }
 
 #app .page.load .loader {

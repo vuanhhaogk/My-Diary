@@ -8,7 +8,7 @@ module.exports = function(root){
 
 	path.public = `${root}/public`
 	path.view = `${root}/view`
-	path.data - `${root}/data`
+	path.data = `${root}/data`
 
 	return path
 }

@@ -38,75 +38,25 @@ html(lang="en")
                         .list
                             button.item
                                 .date
-                                    .monthyear {{ moment(WorkPage.today.date).format('DD') }}
-                                    .day {{ moment(WorkPage.today.date).format('DD') }}
+                                    .monthyear {{ WorkPage_getMonthYear(WorkPage.today.date) }}
+                                    .day {{ WorkPage_getDay(WorkPage.today.date) }}
                                 .ititle {{ WorkPage.today.title }}
                     .box.recent
                         .title RECENT
                         .list
-                            button.item
+                            button.item(v-for='story, index of WorkPage.list' v-if='index !== 0')
                                 .date
-                                    .monthyear 03/2018
-                                    .day 20
-                                .ititle A lovely day with girl friend.
-                            button.item
-                                .date
-                                    .monthyear 03/2018
-                                    .day 19
-                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
-                            button.item
-                                .date
-                                    .monthyear 03/2018
-                                    .day 18
-                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
-                            button.item
-                                .date
-                                    .monthyear 03/2018
-                                    .day 17
-                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
-                            button.item
-                                .date
-                                    .monthyear 03/2018
-                                    .day 16
-                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
-                            button.item
-                                .date
-                                    .monthyear 03/2018
-                                    .day 15
-                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
-                            button.item
-                                .date
-                                    .monthyear 03/2018
-                                    .day 14
-                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
-                            button.item
-                                .date
-                                    .monthyear 03/2018
-                                    .day 13
-                                .ititle Cắm trại với câu lạc bộ sách và hành động UIT.
+                                    .monthyear {{ WorkPage_getMonthYear(story.date) }}
+                                    .day {{ WorkPage_getDay(story.date) }}
+                                .ititle {{ story.title }}
                     .box.memory
                         .title MEMORY
                         .list
-                            button.item
+                            button.item(v-for='story, index of WorkPage.list' v-if='WorkPage_isMemory(story.date)')
                                 .date
-                                    .monthyear 03/2017
-                                    .day 21
-                                .ititle Happy day
-                            button.item
-                                .date
-                                    .monthyear 03/2016
-                                    .day 21
-                                .ititle Happy day
-                            button.item
-                                .date
-                                    .monthyear 03/2015
-                                    .day 21
-                                .ititle Happy day
-                            button.item
-                                .date
-                                    .monthyear 03/2014
-                                    .day 21
-                                .ititle Happy day
+                                    .monthyear {{ WorkPage_getMonthYear(story.date) }}
+                                    .day {{ WorkPage_getDay(story.date) }}
+                                .ititle {{ story.title }}
                     .box.chart
                         .title CHART
                         .calendar
@@ -264,6 +214,7 @@ html(lang="en")
 
         script(src=devmode ? '/asset/lib/vuejs/vue.js' : '/asset/lib/vuejs/vue.min.js')
         script(src='/asset/lib/simplemde/simplemde.min.js')
+        script(src='/asset/lib/momentjs/moment.min.js')
 
         script(src='/app/index.js')
         script(src='/app/LoadPage/index.js')

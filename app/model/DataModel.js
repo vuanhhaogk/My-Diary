@@ -1,14 +1,17 @@
+const fs = require('fs')
 const moment = require('moment')
 
 const DataModel = {}
 
 module.exports = DataModel
 
-const config = require('../../config')
+const config = require('../../config')()
 
 DataModel.getList = function(){
     let dir = fs.readdirSync(config.path.data)
     let ls = []
+    let cdate = moment().format('YYYY-MM-DD')
+    dir.sort(-1)
     for (let name of dir){
         let rel = this.parseFilename(name)
         if (!rel)
@@ -20,6 +23,15 @@ DataModel.getList = function(){
             title: rel[2]
         })
     }
+
+    if (ls.length === 0 || ls[0].date !== cdate){
+        ls.unshift({
+            filename: `[${cdate}] [No Title].md`,
+            date: +moment(),
+            title: '[No Title]'
+        })
+    }
+
     return ls
 }
 

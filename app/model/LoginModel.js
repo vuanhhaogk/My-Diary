@@ -25,5 +25,9 @@ LoginModel.getToken = function(){
 }
 
 LoginModel.checkToken = function(token){
-    return jwt.verify(token, this.password)
+    try {
+        return jwt.verify(token, this.secret)
+    } catch (e) {
+        return false
+    }
 }

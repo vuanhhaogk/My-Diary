@@ -1,8 +1,18 @@
+const DataModel = require('../../model/DataModel')
 const LoginModel = require('../../model/LoginModel')
 
 const ApiController = {}
 
 module.exports = ApiController
+
+ApiController.checkToken = function(req, res, next){
+    let token = req.headers.TOKEN || req.headers.token || req.headers.Token
+    if (!token || !LoginModel.checkToken(token)){
+        res.sendStatus(403)
+        return
+    }
+    next()
+}
 
 ApiController.login = function(req, res){
     let { password } = req.body
@@ -18,4 +28,8 @@ ApiController.login = function(req, res){
         type: 'success',
         token: LoginModel.getToken()
     })
+}
+
+ApiController.getList = function(req, res){
+    res.send(DataModel.getList())
 }

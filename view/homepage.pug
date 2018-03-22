@@ -24,7 +24,7 @@ html(lang="en")
                 .form
                     h1.title MY DIARY
                     .status(v-if='LoginPage.status.type' v-bind:stype='LoginPage.status.type') {{LoginPage.status.message}}
-                    input.input(type='password' v-model='LoginPage.password')
+                    input.input(type='password' v-model='LoginPage.password' v-on:keypress.enter='LoginPage_login')
                     button.submit(v-on:click='LoginPage_login') Login
             .page.load(v-if='LoadPage.active')
                 .loader
@@ -38,9 +38,9 @@ html(lang="en")
                         .list
                             button.item
                                 .date
-                                    .monthyear 03/2018
-                                    .day 21
-                                .ititle [No Title]
+                                    .monthyear {{ moment(WorkPage.today.date).format('DD') }}
+                                    .day {{ moment(WorkPage.today.date).format('DD') }}
+                                .ititle {{ WorkPage.today.title }}
                     .box.recent
                         .title RECENT
                         .list
@@ -257,7 +257,7 @@ html(lang="en")
                         button.item.tab(v-on:click='WorkPage_view' v-bind:active='WorkPage.curtab === "view" ? "true" : "false"') VIEW
                         .item.date 22/12/2018
                         button.item.tool(v-if="!WorkPage.readonly" unsave='false') SAVE
-                        button.item.tool(v-if="!WorkPage.readonly") CLEAR
+                        button.item.tool(v-if="!WorkPage.readonly" v-on:click='WorkPage_clear') CLEAR
                     .content.editor(v-bind:active='WorkPage.curtab == "edit" ? "true" : "false"')
                     .content.preview(v-bind:active='WorkPage.curtab == "view" ? "true" : "false"')
             //.page.notice(v-if='NoticePage.active')

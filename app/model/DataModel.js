@@ -1,5 +1,7 @@
 const fs = require('fs')
+const mdext = require('markdown-extractor')
 const moment = require('moment')
+const sanitize = require('sanitize-filename')
 
 const DataModel = {}
 
@@ -7,10 +9,24 @@ module.exports = DataModel
 
 const config = require('../../config')()
 
+DataModel.list = null
+
+DataModel.createNewStory = function(date = +new Date(), title = 'No Title'){
+    return {
+        filename: `[${moment(date).format('YYYY-MM-DD')}] ${title}.md`,
+        date,
+        title
+    }
+}
+
 DataModel.getList = function(){
+    if (this.list)
+        return this.list
+    
     let dir = fs.readdirSync(config.path.data)
     let ls = []
-    let cdate = moment().format('YYYY-MM-DD')
+    let date = +new Date()
+    let cdate = moment(date).format('YYYY-MM-DD')
     dir.sort(-1)
     for (let name of dir){
         let rel = this.parseFilename(name)
@@ -24,15 +40,13 @@ DataModel.getList = function(){
         })
     }
 
-    if (ls.length === 0 || ls[0].date !== cdate){
-        ls.unshift({
-            filename: `[${cdate}] [No Title].md`,
-            date: +moment(),
-            title: '[No Title]'
-        })
+    if (ls.length === 0 || moment(ls[0].date).format('YYYY-MM-DD') !== cdate){
+        ls.unshift(this.createNewStory(date))
     }
 
-    return ls
+    this.list = ls
+
+    return this.list
 }
 
 DataModel.getStory = function(filename){
@@ -40,12 +54,50 @@ DataModel.getStory = function(filename){
     if (!info)
         return null
 
-    info.content = fs.readFileSync(`${config.path.data}/${filename}`)
+    let path = `${config.path.data}/${filename}`
 
-    return info
+    return fs.existsSync(path) ? fs.readFileSync(path).toString() : ''
+}
+
+DataModel.saveStory = function(content){
+    content = content || ''
+
+    let ls = this.getList()
+
+    if (content === ''){
+        let path = `${config.path.data}/${ls[0].filename}`
+        if (fs.existsSync(path)){
+            fs.unlinkSync(path)
+            ls[0] = this.createNewStory()
+        }
+        return
+    }
+    
+    let hds = mdext.heading(content)
+    let title = 'No Title'
+    let date = +new Date()
+    for (let hd of hds)
+        if (hd.type === 'h1'){
+            title = sanitize(hd.data)
+            break
+        }
+
+    let story = this.createNewStory(date, title)
+    let opath = `${config.path.data}/${ls[0].filename}`
+    let npath = `${config.path.data}/${story.filename}`
+
+    if (moment(ls[0].date).format('YYYY-MM-DD') ===  moment(story.date).format('YYYY-MM-DD')){
+        if (fs.existsSync(opath))
+            fs.unlinkSync(opath)
+        ls[0] = story
+    } else {
+        ls.unshift(story)
+    }
+
+    fs.writeFileSync(npath, content)
 }
 
 DataModel.parseFilename = function(filename){
     let r = /\[([0-9]{4}\-[0-9]{2}\-[0-9]{2})\]\s(.*)\.md/gm
-    return r.exec(name)
+    return r.exec(filename)
 }

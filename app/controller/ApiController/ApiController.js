@@ -33,3 +33,17 @@ ApiController.login = function(req, res){
 ApiController.getList = function(req, res){
     res.send(DataModel.getList())
 }
+
+ApiController.getStory = function(req, res){
+    let { filename } = req.body
+    let content = DataModel.getStory(filename)
+    res.json({ content })
+}
+
+ApiController.saveStory = function(req, res){
+    let content = req.body.content
+
+    DataModel.saveStory(content)
+ 
+    res.send(DataModel.getList())
+}

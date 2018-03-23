@@ -21,8 +21,10 @@
     "commander": "^2.15.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.0",
+    "markdown-extractor": "^1.0.1",
     "moment": "^2.21.0",
     "pug": "^2.0.2",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "sanitize-filename": "^1.6.1"
   }
 }

@@ -144,6 +144,10 @@ label[for='open-left-panel'] {
     overflow: hidden;
 }
 
+#app .page.work .main[hide=true] {
+    visibility: hidden;
+}
+
 #app .page.work .main .menu {
     height: 40px;
     background-color: #e0e0e0;

@@ -33,14 +33,14 @@ html(lang="en")
                 input#open-left-panel(type='checkbox')
                 label(for='open-left-panel') MENU
                 .left
-                    .box.todday
+                    .box.today(v-if='WorkPage.list && WorkPage.list[0]')
                         .title TODAY
                         .list
-                            button.item
+                            button.item(v-if='WorkPage.list && WorkPage.list[0]')
                                 .date
-                                    .monthyear {{ WorkPage_getMonthYear(WorkPage.today.date) }}
-                                    .day {{ WorkPage_getDay(WorkPage.today.date) }}
-                                .ititle {{ WorkPage.today.title }}
+                                    .monthyear {{ WorkPage_getMonthYear(WorkPage.list[0].date) }}
+                                    .day {{ WorkPage_getDay(WorkPage.list[0].date) }}
+                                .ititle {{ WorkPage.list[0].title }}
                     .box.recent
                         .title RECENT
                         .list
@@ -201,12 +201,12 @@ html(lang="en")
                                     .day(check='true')
                                     .day
                                     .day
-                .main
-                    .menu
+                .main(v-bind:hide='WorkPage.cstory === null ? "true" : "false"')
+                    .menu(v-if='WorkPage.cstory !== null')
                         button.item.tab(v-if="!WorkPage.readonly" v-on:click='WorkPage_edit' v-bind:active='WorkPage.curtab == "edit" ? "true" : "false"') EDITOR
                         button.item.tab(v-on:click='WorkPage_view' v-bind:active='WorkPage.curtab === "view" ? "true" : "false"') VIEW
                         .item.date 22/12/2018
-                        button.item.tool(v-if="!WorkPage.readonly" unsave='false') SAVE
+                        button.item.tool(v-on:click='WorkPage_save' v-if="!WorkPage.readonly" unsave='false') SAVE
                         button.item.tool(v-if="!WorkPage.readonly" v-on:click='WorkPage_clear') CLEAR
                     .content.editor(v-bind:active='WorkPage.curtab == "edit" ? "true" : "false"')
                     .content.preview(v-bind:active='WorkPage.curtab == "view" ? "true" : "false"')
@@ -219,6 +219,7 @@ html(lang="en")
         script(src='/app/index.js')
         script(src='/app/LoadPage/index.js')
         script(src='/app/LoginPage/index.js')
+        script(src='/app/NotiPage/index.js')
         script(src='/app/WorkPage/index.js')
 
         script(src='/app/start.js')

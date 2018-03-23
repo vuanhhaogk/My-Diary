@@ -31,7 +31,18 @@ App.methods.WorkPage_loadList = function(){
 }
 
 /*** EDITOR METHODS ***/
+App.methods.WorkPage_showStory = function(story){
+    if (this.WorkPage.cstory && this.WorkPage.cstory === story){
+        return
+    }
+
+    this.WorkPage.cstory = story
+    this.WorkPage_reloadEditor()
+}
+
 App.methods.WorkPage_clear = function(){
+    if (!App.editor.value())
+        return
     App.editor.value('')
     App.editor.togglePreview()
     App.editor.togglePreview()
@@ -94,6 +105,8 @@ App.methods.WorkPage_reloadEditor = function(){
         } else {
             this.WorkPage.readonly = true
             this.WorkPage_view()
+            App.editor.togglePreview()
+            App.editor.togglePreview()
         }
     })
     .catch(err => {

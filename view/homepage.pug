@@ -36,7 +36,7 @@ html(lang="en")
                     .box.today(v-if='WorkPage.list && WorkPage.list[0]')
                         .title TODAY
                         .list
-                            button.item(v-if='WorkPage.list && WorkPage.list[0]')
+                            button.item(v-if='WorkPage.list && WorkPage.list[0]' v-on:click='WorkPage_showStory(WorkPage.list[0])')
                                 .date
                                     .monthyear {{ WorkPage_getMonthYear(WorkPage.list[0].date) }}
                                     .day {{ WorkPage_getDay(WorkPage.list[0].date) }}
@@ -44,7 +44,7 @@ html(lang="en")
                     .box.recent
                         .title RECENT
                         .list
-                            button.item(v-for='story, index of WorkPage.list' v-if='index !== 0')
+                            button.item(v-for='story, index of WorkPage.list' v-if='index !== 0' v-on:click='WorkPage_showStory(story)')
                                 .date
                                     .monthyear {{ WorkPage_getMonthYear(story.date) }}
                                     .day {{ WorkPage_getDay(story.date) }}
@@ -52,7 +52,7 @@ html(lang="en")
                     .box.memory
                         .title MEMORY
                         .list
-                            button.item(v-for='story, index of WorkPage.list' v-if='WorkPage_isMemory(story.date)')
+                            button.item(v-for='story, index of WorkPage.list' v-if='WorkPage_isMemory(story.date)' v-on:click='WorkPage_showStory(story)')
                                 .date
                                     .monthyear {{ WorkPage_getMonthYear(story.date) }}
                                     .day {{ WorkPage_getDay(story.date) }}
@@ -205,7 +205,7 @@ html(lang="en")
                     .menu(v-if='WorkPage.cstory !== null')
                         button.item.tab(v-if="!WorkPage.readonly" v-on:click='WorkPage_edit' v-bind:active='WorkPage.curtab == "edit" ? "true" : "false"') EDITOR
                         button.item.tab(v-on:click='WorkPage_view' v-bind:active='WorkPage.curtab === "view" ? "true" : "false"') VIEW
-                        .item.date 22/12/2018
+                        .item.date {{ `${WorkPage_getDay(WorkPage.cstory.date)}/${WorkPage_getMonthYear(WorkPage.cstory.date)}` }}
                         button.item.tool(v-on:click='WorkPage_save' v-if="!WorkPage.readonly" unsave='false') SAVE
                         button.item.tool(v-if="!WorkPage.readonly" v-on:click='WorkPage_clear') CLEAR
                     .content.editor(v-bind:active='WorkPage.curtab == "edit" ? "true" : "false"')

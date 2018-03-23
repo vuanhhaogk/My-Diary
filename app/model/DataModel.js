@@ -27,7 +27,7 @@ DataModel.getList = function(){
     let ls = []
     let date = +new Date()
     let cdate = moment(date).format('YYYY-MM-DD')
-    dir.sort(-1)
+    dir.sort((a, b) => a > b ? -1 : a < b ? 1 : 0)
     for (let name of dir){
         let rel = this.parseFilename(name)
         if (!rel)

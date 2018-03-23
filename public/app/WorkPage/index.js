@@ -4,10 +4,12 @@ App.data.WorkPage.curtab = 'edit'
 App.data.WorkPage.list = []
 App.data.WorkPage.readonly = false
 App.data.WorkPage.cstory = null
+App.data.WorkPage.calendar = []
 
 /*** COMMON METHODS ***/
 App.methods.WorkPage_init = function(){
     this.WorkPage_loadList()
+    this.WorkPage_loadCalendar()
 }
 
 App.methods.WorkPage_loadList = function(){
@@ -23,6 +25,24 @@ App.methods.WorkPage_loadList = function(){
         this.WorkPage.list = list
         this.WorkPage.cstory = list[0]
         this.WorkPage_reloadEditor()
+    })
+    .catch(err => {
+        console.error(err)
+        this.NotiPage_show('error', 'Error Connection!')
+    })
+}
+
+App.methods.WorkPage_loadCalendar = function(){
+    this.LoadPage_addProcess('loadcalendar')
+    fetch('/api/story/calendar', {
+        headers: {
+            token: sessionStorage.getItem('token')
+        }
+    })
+    .then(res => res.json())
+    .then(calendar => {
+        this.LoadPage_removeProcess('loadcalendar')
+        this.WorkPage.calendar = calendar
     })
     .catch(err => {
         console.error(err)

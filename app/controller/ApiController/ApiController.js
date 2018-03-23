@@ -45,5 +45,9 @@ ApiController.saveStory = function(req, res){
 
     DataModel.saveStory(content)
  
-    res.send(DataModel.getList())
+    res.json(DataModel.getList())
+}
+
+ApiController.getCalendar = function(req, res){
+    res.json(DataModel.getCalendar())
 }

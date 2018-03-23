@@ -101,3 +101,36 @@ DataModel.parseFilename = function(filename){
     let r = /\[([0-9]{4}\-[0-9]{2}\-[0-9]{2})\]\s(.*)\.md/gm
     return r.exec(filename)
 }
+
+DataModel.getCalendar = function(){
+    let cdate = moment()
+
+    let calendar = []
+
+    let ls = this.getList()
+    let cls = 0
+    let week = []
+
+    while (calendar.length < 16){
+
+        if (cdate.day() === 0){
+            calendar.unshift(week)
+            week = []
+        }
+
+        let cdname = cdate.format('YYYY-MM-DD')
+        let clname = moment(ls[cls].date).format('YYYY-MM-DD')
+
+        while (cls < ls.length && clname > cdname){
+            cls++
+            if (cls < ls.length)
+                clname = moment(ls[cls].date).format('YYYY-MM-DD')
+        }
+
+        week.unshift(cls < ls.length && clname === cdname)
+
+        cdate.subtract(1, 'day')
+    }
+
+    return calendar
+}

@@ -120,6 +120,10 @@ label[for='open-left-panel'] {
     margin-right: 3px;
 }
 
+#app .page.work .left .box.chart .calendar .week:last-child .day:last-child[check=true] {
+    background-color: #CDDC39;
+}
+
 #app .page.work .left .box.chart .calendar .clist {
     width: 255px;
     overflow: hidden;

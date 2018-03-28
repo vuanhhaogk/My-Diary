@@ -119,7 +119,7 @@ DataModel.getCalendar = function(){
         }
 
         let cdname = cdate.format('YYYY-MM-DD')
-        let clname = moment(ls[cls].date).format('YYYY-MM-DD')
+        let clname = cls < ls.length ? moment(ls[cls].date).format('YYYY-MM-DD') : null;
 
         while (cls < ls.length && clname > cdname){
             cls++

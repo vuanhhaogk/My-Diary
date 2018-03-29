@@ -202,3 +202,8 @@ label[for='open-left-panel'] {
 #app .page.work .main .content .editor {
     height: 100%;
 }
+
+#app .page.work .main .content img {
+    max-width: 100%;
+    height: auto;
+}

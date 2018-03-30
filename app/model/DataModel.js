@@ -10,6 +10,7 @@ module.exports = DataModel
 const config = require('../../config')()
 
 DataModel.list = null
+DataModel.cdate = (new Date()).getDate()
 
 DataModel.createNewStory = function(date = +new Date(), title = 'No Title'){
     return {
@@ -134,3 +135,10 @@ DataModel.getCalendar = function(){
 
     return calendar
 }
+
+setInterval(() => {
+    if (DataModel.cdate != (new Date).getDate()){
+        DataModel.list = null
+        DataModel.cdate = (new Date).getDate();
+    }
+}, 1000 * 60)

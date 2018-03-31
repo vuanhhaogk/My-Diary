@@ -24,16 +24,16 @@ Open your browser with url: [http://localhost:5000](http://localhost:5000), type
 
 Login page.
 
-![](https://media.vuanhhao.me/view/cc35b6903ece9808ae7e6c6779f0ce77)
+![](public/asset/img/i001.png)
 
 
 Your workpage.
 
-![](https://media.vuanhhao.me/view/ac871e7a6cdef4da68c5e0c45bbb16eb)
+![](public/asset/img/i002.png)
 
 Using markdown to typing.
 
-![](https://media.vuanhhao.me/view/6b51c2c64c4479bb9885c760a9972f4d)
+![](public/asset/img/i003.png)
 
 ## License
 
